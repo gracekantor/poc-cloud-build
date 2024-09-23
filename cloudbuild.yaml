@@ -4,7 +4,7 @@ substitutions:
   _DOCKER_24: DOCKER_VERSION=5:24.0.9-1~ubuntu.20.04~focal
 
 steps:
-- name: 'gcr.io/poc-cloud-build'
+- name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
   - '--tag=temp'
@@ -13,7 +13,7 @@ steps:
   id: 'base'
 
 # Build all supported versions.
-- name: 'gcr.io/poc-cloud-build'
+- name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
   - '--tag=gcr.io/$PROJECT_ID/docker:19.03.15'
@@ -23,7 +23,7 @@ steps:
   id: '19.03.15'
   wait_for: ['base']
 
-- name: 'gcr.io/poc-cloud-build'
+- name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
   - '--tag=gcr.io/$PROJECT_ID/docker:latest'
@@ -34,7 +34,7 @@ steps:
   id: '20.10.24'
   wait_for: ['base']
 
-- name: 'gcr.io/poc-cloud-build'
+- name: 'gcr.io/cloud-builders/docker'
   args:
     - 'build'
     - '--tag=gcr.io/$PROJECT_ID/docker:24.0.9'
