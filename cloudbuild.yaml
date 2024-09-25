@@ -90,4 +90,7 @@ images:
 - 'gcr.io/$PROJECT_ID/docker:20.10.24'
 - 'gcr.io/$PROJECT_ID/docker:24.0.9'
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+  
 timeout: 1200s
