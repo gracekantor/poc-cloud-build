@@ -1,10 +1,10 @@
 substitutions:
-  _DOCKER_19: DOCKER_VERSION=5:19.03.15~3-0~ubuntu-focal
-  _DOCKER_20: DOCKER_VERSION=5:20.10.24~3-0~ubuntu-focal
-  _DOCKER_24: DOCKER_VERSION=5:24.0.9-1~ubuntu.20.04~focal
+  _DOCKER_19: DOCKER_VERSION=5:19.03.153-0ubuntu-focal
+  _DOCKER_20: DOCKER_VERSION=5:20.10.243-0ubuntu-focal
+  _DOCKER_24: DOCKER_VERSION=5:24.0.9-1ubuntu.20.04focal
 
 steps:
-- name: 'gcr.io/cloud-builders/docker'
+name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
   - '--tag=temp'
@@ -13,7 +13,7 @@ steps:
   id: 'base'
 
 # Build all supported versions.
-- name: 'gcr.io/poc-cloud-build'
+name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
   - '--tag=gcr.io/$PROJECT_ID/docker:19.03.15'
@@ -23,7 +23,7 @@ steps:
   id: '19.03.15'
   wait_for: ['base']
 
-- name: 'gcr.io/poc-cloud-build'
+name: 'gcr.io/cloud-builders/docker'
   args:
   - 'build'
   - '--tag=gcr.io/$PROJECT_ID/docker:latest'
@@ -34,7 +34,7 @@ steps:
   id: '20.10.24'
   wait_for: ['base']
 
-- name: 'gcr.io/poc-cloud-build'
+name: 'gcr.io/cloud-builders/docker'
   args:
     - 'build'
     - '--tag=gcr.io/$PROJECT_ID/docker:24.0.9'
@@ -46,7 +46,7 @@ steps:
 
 
 # Test each version by using it to run "docker build" on itself.
-- name: 'gcr.io/$PROJECT_ID/docker:19.03.15'
+name: 'gcr.io/$PROJECT_ID/docker:19.03.15'
   args:
   - 'build'
   - '--file=Dockerfile-versioned'
@@ -54,7 +54,7 @@ steps:
   - '.'
   wait_for: ['19.03.15']
 
-- name: 'gcr.io/$PROJECT_ID/docker:20.10.24'
+name: 'gcr.io/$PROJECT_ID/docker:20.10.24'
   args:
   - 'build'
   - '--file=Dockerfile-versioned'
@@ -62,7 +62,7 @@ steps:
   - '.'
   wait_for: ['20.10.24']
 
-- name: 'gcr.io/$PROJECT_ID/docker:24.0.9'
+name: 'gcr.io/$PROJECT_ID/docker:24.0.9'
   args:
     - 'build'
     - '--file=Dockerfile-versioned'
@@ -75,24 +75,20 @@ steps:
 
 # Get info about an image. This effectively runs the "docker inspect" command on
 # the image built above.
-- name: 'gcr.io/$PROJECT_ID/docker'
+name: 'gcr.io/$PROJECT_ID/docker'
   args: ['inspect', 'gcr.io/$PROJECT_ID/docker']
   wait_for: ['20.10.24']
-
-#GCP SDK
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-
 # Execute a container. The "busybox" container is executed within the docker
 # build step to echo "poc success!"
-- name: 'gcr.io/$PROJECT_ID/docker'
+name: 'gcr.io/$PROJECT_ID/docker'
   args: ['run', 'busybox', 'echo', 'poc success!']
   wait_for: ['20.10.24']
 
 images:
-- 'gcr.io/$PROJECT_ID/docker:latest'
-- 'gcr.io/$PROJECT_ID/docker:19.03.15'
-- 'gcr.io/$PROJECT_ID/docker:20.10.24'
-- 'gcr.io/$PROJECT_ID/docker:24.0.9'
+'gcr.io/$PROJECT_ID/docker:latest'
+'gcr.io/$PROJECT_ID/docker:19.03.15'
+'gcr.io/$PROJECT_ID/docker:20.10.24'
+'gcr.io/$PROJECT_ID/docker:24.0.9'
 
 options:
   logging: CLOUD_LOGGING_ONLY
