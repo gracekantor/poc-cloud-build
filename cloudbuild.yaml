@@ -18,3 +18,8 @@
     - 'us-central1'
   images:
   - 'gcr.io/$PROJECT_ID/poc-cloud-build:$COMMIT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  
+timeout: 1200s
