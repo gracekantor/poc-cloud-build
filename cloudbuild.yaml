@@ -22,11 +22,8 @@
 
   - name: 'bash'
     args: ['echo', 'Hello world!']
-  logsBucket: 'LOGS_BUCKET_LOCATION'
+  logsBucket: 'us-central1'
   serviceAccount: 'projects/mindful-hall-431809-j6/serviceAccounts/438724874462-compute@developer.gserviceaccount.com'
  
   options:
     logging: GCS_ONLY
-  
-options:
-  logging: CLOUD_LOGGING_ONLY
