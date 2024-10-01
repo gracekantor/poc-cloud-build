@@ -20,6 +20,4 @@
   images:
   - 'gcr.io/$PROJECT_ID/poc-cloud-build:$COMMIT_SHA'
 
- 
-  options:
-    logging: GCS_ONLY
+
