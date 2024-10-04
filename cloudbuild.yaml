@@ -1,7 +1,7 @@
   steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/mindful-hall-431809-j6/cloud-run-source-deploy/docker_image', '.' ]
+    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/mindful-hall-431809-j6/cloud-run-source-deploy/quickstart-image:gcr.io/mindful-hall-431809-j6/poc-cloud-build', '.' ]
   
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
