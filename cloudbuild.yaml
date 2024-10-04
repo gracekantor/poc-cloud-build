@@ -5,7 +5,7 @@
   
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/poc-cloud-build:$COMMIT_SHA']
+    args: ['push', 'us-central1-docker.pkg.dev/mindful-hall-431809-j6/cloud-run-source-deploy/quickstart-image']
 
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -15,12 +15,12 @@
     - 'deploy'
     - 'poc-cloud-build'
     - '--image'
-    - 'gcr.io/$PROJECT_ID/poc-cloud-build:$COMMIT_SHA'
+    - 'us-central1-docker.pkg.dev/mindful-hall-431809-j6/cloud-run-source-deploy/quickstart-image'
     - '--region'
     - 'us-central1'
     
   images:
-  - 'gcr.io/$PROJECT_ID/poc-cloud-build:$COMMIT_SHA'
+  - 'us-central1-docker.pkg.dev/mindful-hall-431809-j6/cloud-run-source-deploy/quickstart-image'
 
   options:
       logging: CLOUD_LOGGING_ONLY
