@@ -1,14 +1,3 @@
 steps:
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  args:
-  - gcloud
-  - functions
-  - deploy
-  - function-test
-  - --region=us-central1
-  - --source=.
-  - --trigger-http
-  - --runtime=dotnet3
-
-  options:
-      logging: CLOUD_LOGGING_ONLY
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['functions', 'deploy', 'function-1', '--source=.']
