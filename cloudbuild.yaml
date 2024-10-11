@@ -5,8 +5,8 @@ steps:
   - deploy
   - function-2
   - --source=.
-  - --trigger-bucket 
   - --runtime python39
+  - --trigger-bucket 
   - homepage
   
 options:
