@@ -1,13 +1,14 @@
 steps:
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   args:
+  - gcloud
   - functions
   - deploy
   - function-2
-  - --runtime python39
+  - --region=us-central1
   - --source=.
-  - --trigger-bucket 
-  - homepage
+  - --trigger-http
+  - --runtime=python39
   
 options:
       logging: CLOUD_LOGGING_ONLY
