@@ -4,11 +4,11 @@ steps:
   - gcloud
   - functions
   - deploy
-  - function-3
+  - function-2
   - --region=us-central1
   - --source=.
   - --trigger-http
-  - --runtime=go121
+  - --runtime=python39
   
 options:
       logging: CLOUD_LOGGING_ONLY
