@@ -3,9 +3,10 @@ steps:
   args:
   - functions
   - deploy
-  - pupetter-e2e
+  - function-2
   - --source=.
   - --trigger-bucket 
+  - --runtime python39
   - homepage
   
 options:
