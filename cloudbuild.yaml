@@ -4,7 +4,7 @@ steps:
   - functions
   - deploy
   - function-2
-  --runtime python39
+  - --runtime python39
   - --source=.
   - --trigger-bucket 
   - homepage
