@@ -1,3 +1,10 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['functions', 'deploy', 'function-1', '--source=.']
+  args:
+  - functions
+  - deploy
+  - pupetter-e2e
+  - --source=.
+  - --trigger-bucket 
+  - homepage
+  
