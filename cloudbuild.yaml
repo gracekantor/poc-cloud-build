@@ -8,3 +8,5 @@ steps:
   - --trigger-bucket 
   - homepage
   
+options:
+      logging: CLOUD_LOGGING_ONLY
