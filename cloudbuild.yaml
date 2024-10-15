@@ -8,7 +8,7 @@ steps:
   - --region=us-central1
   - --source=.
   - --trigger-http
-  - --runtime=phyton39
+  - --runtime=python39
   
 options:
       logging: CLOUD_LOGGING_ONLY
