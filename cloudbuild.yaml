@@ -8,7 +8,7 @@ steps:
   - --region=us-central1
   - --source=.
   - --trigger-http
-  - --runtime=go122
+  - --runtime=phyton39
   
 options:
       logging: CLOUD_LOGGING_ONLY
